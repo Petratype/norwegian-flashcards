@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="no">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>La oss lære norsk!</title>
+
+  <!-- Inline SVG favicon (Norwegian flag) -->
+  <link rel="icon" href='data:image/svg+xml;utf8,
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 16">
+    <rect width="22" height="16" fill="%23EF2B2D"/>
+    <rect x="6" width="4" height="16" fill="%23FFF"/>
+    <rect y="6" width="22" height="4" fill="%23FFF"/>
+    <rect x="7" width="2" height="16" fill="%23003F87"/>
+    <rect y="7" width="22" height="2" fill="%23003F87"/>
+  </svg>'>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- theme toggle (top-right) -->
+  <button id="mode-toggle" aria-label="Toggle theme" title="Toggle theme">
+    <!-- sun (shown in light) -->
+    <svg id="sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <circle cx="12" cy="12" r="4.2" fill="currentColor"></circle>
+      <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+        <line x1="12" y1="1.8" x2="12" y2="4.2"></line>
+        <line x1="12" y1="19.8" x2="12" y2="22.2"></line>
+        <line x1="1.8" y1="12" x2="4.2" y2="12"></line>
+        <line x1="19.8" y1="12" x2="22.2" y2="12"></line>
+        <line x1="4.2" y1="4.2" x2="6.1" y2="6.1"></line>
+        <line x1="17.9" y1="17.9" x2="19.6" y2="19.6"></line>
+      </g>
+    </svg>
+    <!-- moon (shown in dark) -->
+    <svg id="moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"></path>
+    </svg>
+  </button>
+
+  <!-- LARGE centered landing page -->
+  <main id="landing" class="landing">
+    <div class="landing-inner">
+      <div class="landing-title-row">
+        <!-- inline flag -->
+        <svg class="flag-inline" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="22" height="16" fill="#EF2B2D"/>
+          <rect x="6" width="4" height="16" fill="#fff"/>
+          <rect y="6" width="22" height="4" fill="#fff"/>
+          <rect x="7" width="2" height="16" fill="#003F87"/>
+          <rect y="7" width="22" height="2" fill="#003F87"/>
+        </svg>
+
+        <h1 class="huge">La oss lære norsk!</h1>
+      </div>
+
+      <p class="where">Where should we start?</p>
+
+      <div class="landing-buttons">
+        <button id="btn-learning" class="primary">Learning</button>
+        <button id="btn-flashcards" class="primary">Flashcards</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- APP area (hidden until a section chosen) -->
+  <section id="app" class="app hidden" aria-hidden="true">
+    <div class="card">
+      <aside class="sidebar">
+        <h3>Categories</h3>
+        <div id="category-list" class="cat-list" role="list"></div>
+      </aside>
+
+      <div class="panel">
+        <!-- Content title -->
+        <h2 id="panel-title">...</h2>
+
+        <!-- Learning content -->
+        <div id="learning-view" class="view hidden" aria-hidden="true">
+          <div id="learning-list"></div>
+        </div>
+
+        <!-- Flashcards content -->
+        <div id="flashcard-view" class="view hidden" aria-hidden="true">
+          <div id="flashcard-top">
+            <div id="english-word" class="english">—</div>
+            <div id="hint" class="hint"> </div>
+          </div>
+
+          <input id="answer" type="text" autocomplete="off" placeholder="Type your answer...">
+
+          <div class="controls">
+            <button id="next-btn" class="btn-primary" disabled>Next ➡</button>
+            <div id="feedback" class="feedback" aria-live="polite"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="app-bottom">
+      <button id="back-home" class="back">⬅ Back</button>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
