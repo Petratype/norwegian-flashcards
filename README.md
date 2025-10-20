@@ -2,7 +2,7 @@
 
 This is the **first version** of a work-in-progress app, only the basics. The goal is to create a tool that helps memorize Norwegian vocabulary, with plans to add more categories and functionalities in the future.
 
-Inspired by my own learning, this app is designed to help me practice and remember words that are harder to memorize — and maybe others can find it useful too.
+Inspired by my own learning, this app is designed to help me practice and remember words that are harder for me to memorize. But for now it only has some basic categories while i work on building a stronger structure to support a more complex level. I wish this app helps me with my own learning and maybe, hopefuly, others can find it useful too.
 
 ---
 
@@ -38,7 +38,7 @@ git clone https://github.com/petratype/norwegian-flashcards.git
 
 ## Contributing
 
-Currently not open for collaborations — this is my personal project and still in development, but i'd love to have them in the future! 
+Currently not open for collaborations: this is my personal project and still in development, but i'd love to have them in the future! 
 
 ---
 
