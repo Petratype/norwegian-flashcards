@@ -1,5 +1,16 @@
 // Data
 const data = {
+  alphabet: {
+    info: "The Norwegian alphabet is the same as the Latin alphabet but adds three additional letters at the end: Æ, Ø, and Å.",
+   letters: "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å"
+  },
+  numbers: {
+    One:"En", Two:"To", Three:"Tre", Four:"Fire", Five:"Fem",
+    Six:"Seks", Seven:"Sju", Eight:"Åtte", Nine:"Ni", Ten:"Ti",
+    Eleven:"Elleve", Twelve:"Tolv", Thirteen:"Tretten", Fourteen:"Fjorten",
+    Fifteen:"Femten", Sixteen:"Seksten", Seventeen:"Sytten", Eighteen:"Atten",
+    Nineteen:"Nitten", Twenty:"Tjue"
+  },
   weekdays: {
     Monday: "Mandag", Tuesday: "Tirsdag", Wednesday: "Onsdag",
     Thursday: "Torsdag", Friday: "Fredag", Saturday: "Lørdag", Sunday: "Søndag"
@@ -9,13 +20,7 @@ const data = {
     May: "Mai", June: "Juni", July: "Juli", August: "August",
     September: "September", October: "Oktober", November: "November", December: "Desember"
   },
-  numbers: {
-    One:"En", Two:"To", Three:"Tre", Four:"Fire", Five:"Fem",
-    Six:"Seks", Seven:"Sju", Eight:"Åtte", Nine:"Ni", Ten:"Ti",
-    Eleven:"Elleve", Twelve:"Tolv", Thirteen:"Tretten", Fourteen:"Fjorten",
-    Fifteen:"Femten", Sixteen:"Seksten", Seventeen:"Sytten", Eighteen:"Atten",
-    Nineteen:"Nitten", Twenty:"Tjue"
-  }
+  
 };
 
 // Elements
@@ -79,7 +84,16 @@ function openSection(section){
 
 function populateCategories(section){
   categoryList.innerHTML = '';
-  Object.keys(data).forEach(cat => {
+
+  // Get all categories
+  let categories = Object.keys(data);
+
+  // Remove alphabet from flashcards
+  if(section === 'flashcards') {
+    categories = categories.filter(cat => cat !== 'alphabet');
+  }
+
+  categories.forEach(cat => {
     const btn = document.createElement('button');
     btn.className = 'cat-item';
     btn.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
@@ -94,6 +108,7 @@ function populateCategories(section){
   });
 }
 
+
 // Learning
 function openLearning(cat){
   currentCategory = cat;
@@ -101,13 +116,47 @@ function openLearning(cat){
   learningView.classList.remove('hidden');
   flashcardView.classList.add('hidden');
   learningList.innerHTML = '';
-  const entries = Object.entries(data[cat]);
-  entries.forEach(([eng,nor]) => {
-    const p = document.createElement('p');
-    p.textContent = `${eng} → ${nor}`;
-    learningList.appendChild(p);
-  });
+
+  if(cat === 'alphabet'){
+    const letters = data.alphabet.letters.split(' ');
+
+    // Split standard letters and Norwegian-only letters
+    const normalLetters = letters.slice(0, letters.length - 3); // A-Z
+    const norwegianLetters = letters.slice(-3); // Æ Ø Å
+
+    // Row for standard letters
+    const normalRow = document.createElement('div');
+    normalRow.className = 'letter-row';
+    normalLetters.forEach(letter => {
+      const btn = document.createElement('button');
+      btn.textContent = letter;
+      btn.className = 'letter-card';
+      normalRow.appendChild(btn);
+    });
+    learningList.appendChild(normalRow);
+
+    // Row for Norwegian-only letters
+    const norwegianRow = document.createElement('div');
+    norwegianRow.className = 'letter-row norwegian'; // add extra spacing
+    norwegianLetters.forEach(letter => {
+      const btn = document.createElement('button');
+      btn.textContent = letter;
+      btn.className = 'letter-card';
+      norwegianRow.appendChild(btn);
+    });
+    learningList.appendChild(norwegianRow);
+
+  } else {
+    // Normal categories
+    const entries = Object.entries(data[cat]);
+    entries.forEach(([eng,nor]) => {
+      const p = document.createElement('p');
+      p.textContent = `${eng} → ${nor}`;
+      learningList.appendChild(p);
+    });
+  }
 }
+
 
 // Flashcards
 function openFlashcards(cat){
