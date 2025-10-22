@@ -1,7 +1,7 @@
 // Data
 const data = {
   alphabet: {
-    info: "The Norwegian alphabet is the same as the Latin alphabet but adds three additional letters at the end: Æ, Ø, and Å.",
+    info: "The Norwegian alphabet is the same as the Latin alphabet but adds three additional letters at the end: Æ, Ø and Å.",
    letters: "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z Æ Ø Å"
   },
   numbers: {
