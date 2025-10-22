@@ -108,7 +108,6 @@ function populateCategories(section){
   });
 }
 
-
 // Learning
 function openLearning(cat){
   currentCategory = cat;
@@ -118,6 +117,16 @@ function openLearning(cat){
   learningList.innerHTML = '';
 
   if(cat === 'alphabet'){
+    // Show info text first (with theme support)
+    const infoP = document.createElement('p');
+    infoP.textContent = data.alphabet.info; // your info string
+    infoP.style.padding = '12px 14px';
+    infoP.style.marginBottom = '20px';
+    infoP.style.background = 'var(--panel)'; // adapts to dark/light mode
+    infoP.style.borderRadius = '10px';
+    infoP.style.color = 'var(--text)';       // text adapts too
+    learningList.appendChild(infoP);
+
     const letters = data.alphabet.letters.split(' ');
 
     // Split standard letters and Norwegian-only letters
@@ -137,7 +146,7 @@ function openLearning(cat){
 
     // Row for Norwegian-only letters
     const norwegianRow = document.createElement('div');
-    norwegianRow.className = 'letter-row norwegian'; // add extra spacing
+    norwegianRow.className = 'letter-row norwegian'; // extra spacing
     norwegianLetters.forEach(letter => {
       const btn = document.createElement('button');
       btn.textContent = letter;
@@ -152,6 +161,10 @@ function openLearning(cat){
     entries.forEach(([eng,nor]) => {
       const p = document.createElement('p');
       p.textContent = `${eng} → ${nor}`;
+      p.style.padding = '10px 14px';
+      p.style.borderRadius = '10px';
+      p.style.background = 'var(--panel)';
+      p.style.color = 'var(--text)';
       learningList.appendChild(p);
     });
   }
