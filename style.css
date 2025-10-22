@@ -44,6 +44,14 @@ body{
 }
 #mode-toggle:hover{ transform: translateY(-3px); }
 
+/* show sun only in light mode, moon only in dark mode */
+#moon { display: none; }
+:root[data-theme="dark"] #moon { display: inline; }
+:root[data-theme="dark"] #sun { display: none; }
+
+.theme-icon { font-size: 30px; line-height: 1; }
+
+
 /* landing centered */
 .landing{
   min-height:100vh;
